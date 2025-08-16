@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-proxy
+  template:
+    metadata:
+      labels:
+        app: todo-proxy
+    spec:
+      containers:
+        - name: todo-proxy
+          image: "{{ .Values.proxy.image }}:{{ .Values.proxy.tag }}"
+          ports:
+            - containerPort: {{ .Values.proxy.port }}

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-proxy
+  template:
+    metadata:
+      labels:
+        app: todo-proxy
+    spec:
+      containers:
+        - name: todo-proxy
+          image: tejithjayanthi349/todo-proxy:v1
+          ports:
+            - containerPort: 8080

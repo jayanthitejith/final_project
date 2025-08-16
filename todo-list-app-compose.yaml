@@ -1,0 +1,23 @@
+### Working with docker compose
+
+services:
+  todo-app:
+    image: tejithjayanthi349/todo-list-app:v1
+    restart: always
+# Commenting out the ports section to close the backdoor
+ #   ports:
+ #     - 3000:3000
+    networks:
+      - todo-network
+  todo-proxy:
+    image: tejithjayanthi349/todo-proxy:v1
+    ports:
+      - 8081:8080
+    depends_on:
+      - todo-app
+    restart: always
+    networks:
+      - todo-network
+
+networks:
+  todo-network:

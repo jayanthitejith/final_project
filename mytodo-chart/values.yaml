@@ -1,0 +1,10 @@
+backend:
+  image: tejithjayanthi349/todo-list-app
+  tag: v1
+  port: 3000
+
+proxy:
+  image: tejithjayanthi349/todo-proxy
+  tag: v1
+  port: 8080
+  nodePort: 30081
